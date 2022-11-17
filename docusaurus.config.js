@@ -39,13 +39,6 @@ const config = {
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -127,6 +120,18 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+  plugins: [
+    [
+      './src/plugins/plugin-content-blog-enhance.js',
+      {
+        id: 'blog',
+        routeBasePath: 'blog',
+        path: './blog',
+        showReadingTime: true,
+        blogSidebarTitle: '历史博文'
+      }
+    ]
+  ]
 };
 
 module.exports = config;
